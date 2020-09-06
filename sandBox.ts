@@ -1,6 +1,6 @@
 // write file
 //const encoder = new TextEncoder();
-const text = "Ciao Mario";
+let text = "Ciao Mario";
 //await Deno.writeFile("readme.txt", encoder.encode(text));
 await Deno.writeTextFile("readme.txt", text);
 
@@ -17,7 +17,7 @@ await Deno.rename("readme.txt", "deleteme.txt");
 // fetch api
 const res = await fetch("https://swapi.dev/api/films");
 const data = await res.json();
-console.log(data);
+console.log(data.url);
 
 // uuid
 import { v4 } from "https://deno.land/std/uuid/mod.ts";
@@ -45,3 +45,19 @@ for await (const req of server) {
   const { url } = req;
   req.respond({ body: `You visited ${url}.` });
 }
+
+// case
+import {
+  camelCase,
+  paramCase,
+  pascalCase,
+  snakeCase,
+} from "https://deno.land/x/case/mod.ts";
+
+text = "ciao ciao mario";
+const camel = camelCase(text);
+const param = paramCase(text);
+const pascal = pascalCase(text);
+const snake = snakeCase(text);
+
+console.log(text, camel, param, pascal, snake);
