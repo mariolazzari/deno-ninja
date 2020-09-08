@@ -11,5 +11,11 @@ app.get("/", async (ctx: Context) => {
   await ctx.file("./public/index.html");
 });
 
+app.get("/books", async (ctx: Context) => {
+  console.log("Get all books");
+}).get("/books/:id", async (ctx: Context) => {
+  console.log("Get  book");
+}).post("/books", () => {})
+  .delete("/books/:id", () => {});
 // start server on port
 app.start({ port: 3000 });
